@@ -57,6 +57,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>a</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -77,6 +78,7 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>b</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -97,6 +99,7 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>c</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>

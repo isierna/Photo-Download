@@ -1,0 +1,35 @@
+#Photo-Download
+
+Program created to download RAW and JPEG samples for testing purposes from such resources:
+
+ - http://www.photographyblog.com
+ - https://www.imaging-resource.com
+ - https://www.dpreview.com
+
+#Before running .jar, make sure such programs are installed on your system.
+
+#Windows instructions:
+1. Open CMD
+2. Run 'java -version' => in case Java is not installed, download and install it (https://java.com/en/download/)
+3. Install FireFox browser
+4. Download 'Geckodriver' and set it in the PATH environment variable
+	4.1 Download from => https://github.com/mozilla/geckodriver/releases
+	4.2 Unpack the zip and copy the path to 'geckodriver' executable
+	4.3 Add path to the PATH environment variable (located in System Properties >> Advanced >> Environment Variables)
+	4.4 Restart the OS
+
+#Mac instructions:
+1. Open terminal and install Brew
+2. Run command 'brew install java'
+3. Verify that Java was installed by running 'java -version'
+4. Install FireFox browser
+5. Download Geckodriver, unpack and set it to the system PATH
+
+#Downloading Files
+5. Open CMD
+6. Run command 'java -jar /path/to/*.jar
+7. You will be requested to enter the path to the folder where you want to save your files
+8. Follow rest of the instructions (Maker, Model)
+9. Enter URL where files are located in one of the resource sites
+10. Wait for the program to finish downloading
+

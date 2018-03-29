@@ -1,9 +1,10 @@
 package DownloadingPhotos;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter path to the folder where you want to save files");
         String saveLocation = scanner.nextLine();
@@ -21,10 +22,29 @@ public class Main {
         String linkToFiles = scanner.nextLine();
         linkToFiles = "https://www.dpreview.com/sample-galleries/4214734878/canon-eos-m6-w-ef-m-22mm-f2/9182402102";
 
+        AbstractPhoto photoDownload;
+
+        if(linkToFiles.contains("dpreview")) {
+            photoDownload = new Dpreview(saveLocation, maker, model, linkToFiles);
+            photoDownload.openBrowser();
+            photoDownload.findFile();
+            photoDownload.closeBrowser();
 
 
-        AbstractPhoto photoDownload = new Blog(saveLocation, maker, model, linkToFiles);
-        photoDownload.openBrowser();
-        photoDownload.openBrowser();
+        } else if (linkToFiles.contains("blog")) {
+            photoDownload = new Blog(saveLocation, maker, model, linkToFiles);
+            photoDownload.openBrowser();
+            photoDownload.findFile();
+            photoDownload.openBrowser();
+
+        } else if (linkToFiles.contains("imaging-resource")) {
+            photoDownload = new ImagingResource(saveLocation, maker, model, linkToFiles);
+            photoDownload.openBrowser();
+            photoDownload.findFile();
+            photoDownload.closeBrowser();
+        } else {
+            System.out.println("Link is not valid");
+        }
+        System.out.println("DONE");
     }
 }

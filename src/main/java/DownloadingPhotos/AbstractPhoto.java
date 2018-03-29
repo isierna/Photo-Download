@@ -5,14 +5,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public abstract class AbstractPhoto {
-    private static WebDriver driver;
+    public static WebDriver driver;
     private static FirefoxOptions options;
     private static String maker;
     private static String model;
-    private static String linkToFiles;
-    private static String directory;
+    public static String linkToFiles;
+    public static String directory;
     private static String mainDirectory;
 
     public AbstractPhoto(String mainDirectory, String maker, String model, String linkToFiles) {
@@ -21,10 +23,11 @@ public abstract class AbstractPhoto {
         this.model = model;
         this.linkToFiles = linkToFiles;
         this.options = new FirefoxOptions().setHeadless(true);
+        openBrowser();
     }
 
     public void openBrowser() {
-        this.mainDirectory = mainDirectory + maker + "_" + model;
+        this.mainDirectory = maker + "_" + model;
         directory = mainDirectory + "/JPG&RAW";
 
         new File(mainDirectory).mkdir();
@@ -33,10 +36,10 @@ public abstract class AbstractPhoto {
         driver = new FirefoxDriver(options);
     }
 
-    public abstract void findFile();
-    public abstract void download();
+    public abstract void findFile() throws IOException;
+    public abstract void download(URL url, String destination) throws IOException;
 
-    private static boolean checkIfFileExists(String file_name, String directory) {
+    public static boolean checkIfFileExists(String file_name, String directory) {
         File file1 = new File(directory);
         String[] all_files = file1.list();
 
